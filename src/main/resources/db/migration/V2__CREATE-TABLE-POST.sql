@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS tb_posts(
     titulo VARCHAR(255) NOT NULL,
     conteudo TEXT NOT NULL,
     dataDeCriacao  DATE NOT NULL,
-    PRIMARY KEY(idPost) REFERENCES tb_usuarios(idAutor),
-    FOREIGN KEY(idAutor)
+    idUsuario BIGINT,
+    PRIMARY KEY(idPost),
+    FOREIGN KEY(idUsuario)REFERENCES tb_usuarios(idUsuario)
 );
