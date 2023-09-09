@@ -43,12 +43,12 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> cadastrarCategoria(@RequestBody Post post) {
+    public ResponseEntity<Post> cadastrarPosts(@RequestBody Post post) {
         return ResponseEntity.status(HttpStatus.CREATED).body(postRepository.save(post));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Post> atualizarCategoria(@PathVariable("id") Long id, @RequestBody Post post) {
+    public ResponseEntity<Post> atualizarPosts(@PathVariable("id") Long id, @RequestBody Post post) {
         Optional<Post> postExistente = postRepository.findById(id);
 
         if (postExistente.isPresent()) {

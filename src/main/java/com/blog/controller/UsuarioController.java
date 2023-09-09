@@ -25,7 +25,7 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> listarusuarios(Usuario usuario) {
+    public ResponseEntity<List<Usuario>> listarUsuarios(Usuario usuario) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll());
     }
 
@@ -41,12 +41,12 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> cadastrarCategoria(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> cadastrarUsuarios(@RequestBody Usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizarCategoria(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> atualizarUsuarios(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
