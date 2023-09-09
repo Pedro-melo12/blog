@@ -47,9 +47,9 @@ public class UsuarioController {
 
         if (usuarioExistente.isPresent()) {
             usuarioExistente.get().setNome(usuario.getNome());
-            usuarioExistente.get().setSobrenome(null);(usuario.getConteudo());
-            usuarioExistente.get().setDataDeCriacao(usuario.getDataDeCriacao());
-            usuarioExistente.get().setUsuario(usuario.getUsuario());
+            usuarioExistente.get().setSobrenome(usuario.getSobrenome());
+            usuarioExistente.get().setEmail(usuario.getEmail());
+            usuarioExistente.get().setSenha(usuario.getSenha());
 
             return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.save(usuarioExistente.get()));
         }
@@ -59,7 +59,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarusuarioPeloId(@PathVariable Long id) {
-        Optional<usuario> usuario = usuarioRepository.findById(id);
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -67,7 +67,7 @@ public class UsuarioController {
 
         usuarioRepository.deleteById(id);
 
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("usuario deletada com sucesso!");
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("usuario deletado com sucesso!");
     }
 
 }
