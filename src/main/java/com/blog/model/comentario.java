@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity(name = "tb_comentarios")
-public class comentario {
+public class Comentario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +35,9 @@ public class comentario {
 
     @ManyToOne
     @JoinColumn(name = "idAutor")
-    private usuario usuario;
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idPost")
-    private post post;
+    private Post post;
 }

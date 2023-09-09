@@ -6,8 +6,8 @@ package com.blog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.blog.model.usuario;
+import com.blog.model.Usuario;
 
-public interface UsuarioRepository extends JpaRepository<usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     
 }
