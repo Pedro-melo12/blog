@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blog.model.Post;
+import com.blog.model.post;
+
 import com.blog.repository.PostRepository;
 
 @RestController
@@ -27,13 +28,13 @@ public class PostController {
     private PostRepository postRepository;
 
     @GetMapping
-    public ResponseEntity<List<Post>> listarPosts(Post post) {
+    public ResponseEntity<List<post>> listarPosts(post post) {
         return ResponseEntity.status(HttpStatus.OK).body(postRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Post> listarPostsPeloId(@PathVariable("id") Long id) {
-        Optional<Post> post = postRepository.findById(id);
+    public ResponseEntity<post> listarPostsPeloId(@PathVariable("id") Long id) {
+        Optional<post> post = postRepository.findById(id);
 
         if (post.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -43,13 +44,13 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<Post> cadastrarPosts(@RequestBody Post post) {
+    public ResponseEntity<post> cadastrarPosts(@RequestBody post post) {
         return ResponseEntity.status(HttpStatus.CREATED).body(postRepository.save(post));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Post> atualizarPosts(@PathVariable("id") Long id, @RequestBody Post post) {
-        Optional<Post> postExistente = postRepository.findById(id);
+    public ResponseEntity<post> atualizarPosts(@PathVariable("id") Long id, @RequestBody post post) {
+        Optional<post> postExistente = postRepository.findById(id);
 
         if (postExistente.isPresent()) {
             postExistente.get().setTitulo(post.getTitulo());
@@ -65,7 +66,7 @@ public class PostController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarPostPeloId(@PathVariable Long id) {
-        Optional<Post> post = postRepository.findById(id);
+        Optional<post> post = postRepository.findById(id);
 
         if (post.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blog.model.Comentario;
+import com.blog.model.comentario;
 import com.blog.repository.ComentarioRepository;
 
 @RestController
@@ -24,13 +24,13 @@ public class ComentarioController {
     private ComentarioRepository comentarioRepository;
 
      @PostMapping
-    public ResponseEntity<Comentario> cadastrarComentario(@RequestBody Comentario comentario) {
+    public ResponseEntity<comentario> cadastrarComentario(@RequestBody comentario comentario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(comentarioRepository.save(comentario));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Comentario> atualizarComentario(@PathVariable("id") Long id, @RequestBody Comentario comentario) {
-        Optional<Comentario> comentarioExistente = comentarioRepository.findById(id);
+    public ResponseEntity<comentario> atualizarComentario(@PathVariable("id") Long id, @RequestBody comentario comentario) {
+        Optional<comentario> comentarioExistente = comentarioRepository.findById(id);
 
         if (comentarioExistente.isPresent()) {
             
@@ -49,7 +49,7 @@ public class ComentarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarcomentarioPeloId(@PathVariable Long id) {
-        Optional<Comentario> comentario = comentarioRepository.findById(id);
+        Optional<comentario> comentario = comentarioRepository.findById(id);
 
         if (comentario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

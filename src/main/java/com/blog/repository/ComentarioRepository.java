@@ -2,8 +2,8 @@ package com.blog.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.blog.model.Comentario;
+import com.blog.model.comentario;
 
-public interface ComentarioRepository extends JpaRepository<Comentario, Long> {
+public interface ComentarioRepository extends JpaRepository<comentario, Long> {
     
 }

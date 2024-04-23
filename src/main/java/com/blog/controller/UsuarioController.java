@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.blog.model.Usuario;
+import com.blog.model.usuario;
 import com.blog.repository.UsuarioRepository;
 
 @RestController
@@ -25,13 +25,13 @@ public class UsuarioController {
     private UsuarioRepository usuarioRepository;
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> listarUsuarios(Usuario usuario) {
+    public ResponseEntity<List<usuario>> listarUsuarios(usuario usuario) {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioRepository.findAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> listarusuariosPeloId(@PathVariable("id") Long id) {
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
+    public ResponseEntity<usuario> listarusuariosPeloId(@PathVariable("id") Long id) {
+        Optional<usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
@@ -41,13 +41,13 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> cadastrarUsuarios(@RequestBody Usuario usuario) {
+    public ResponseEntity<usuario> cadastrarUsuarios(@RequestBody usuario usuario) {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioRepository.save(usuario));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> atualizarUsuarios(@PathVariable("id") Long id, @RequestBody Usuario usuario) {
-        Optional<Usuario> usuarioExistente = usuarioRepository.findById(id);
+    public ResponseEntity<usuario> atualizarUsuarios(@PathVariable("id") Long id, @RequestBody usuario usuario) {
+        Optional<usuario> usuarioExistente = usuarioRepository.findById(id);
 
         if (usuarioExistente.isPresent()) {
             usuarioExistente.get().setNome(usuario.getNome());
@@ -63,7 +63,7 @@ public class UsuarioController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deletarusuarioPeloId(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        Optional<usuario> usuario = usuarioRepository.findById(id);
 
         if (usuario.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
